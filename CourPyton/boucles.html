@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle for en Python - Documentation</title>
+    <!-- Lien vers la bibliothèque Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        section h2 {
+            color: #007bff;
+        }
+
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .example-code {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .highlight {
+            background-color: #e9ecef;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="text-center">
+        <nav>
+            <a href="index.html">Index</a>
+            <a href="boucles.html">Boucle for</a>
+        </nav>
+        <div class="container">
+            <h1>Boucle for en Python</h1>
+            <p class="lead">Une introduction détaillée à la boucle <code>for</code> en Python pour itérer sur des
+                collections de données.</p>
+        </div>
+    </header>
+
+    <div class="container content-section">
+        <section id="boucle_for">
+            <h2>1. La Boucle for</h2>
+            <p>La boucle <strong>for</strong> est utilisée pour itérer sur des éléments d'une collection, comme des
+                listes, des tuples, des ensembles ou des dictionnaires. Elle permet de traiter chaque élément de la
+                collection de manière répétée.</p>
+
+            <h3>Exemple de boucle for avec une liste</h3>
+            <pre class="example-code"><code>personnes = ["Alice", "Bob", "Charlie"]
+for personne in personnes:
+    print(personne)</code></pre>
+            <p><strong>Sortie :</strong></p>
+            <pre class="highlight"><code>Alice
+Bob
+Charlie</code></pre>
+
+            <h3>Utilisation de range() avec for</h3>
+            <p>La fonction <code>range()</code> génère une séquence de nombres, souvent utilisée pour répéter une action
+                un certain nombre de fois.</p>
+            <pre class="example-code"><code>for i in range(3):
+    print(i)</code></pre>
+            <p><strong>Sortie :</strong></p>
+            <pre class="highlight"><code>0
+1
+2</code></pre>
+
+            <h3>Itérer sur un dictionnaire</h3>
+            <p>Il est possible d'itérer sur un dictionnaire en accédant aux clés ou aux valeurs avec la boucle
+                <code>for</code>.</p>
+            <pre class="example-code"><code>personne = {"nom": "Alice", "age": 25, "ville": "Paris"}
+for cle, valeur in personne.items():
+    print(cle, ":", valeur)</code></pre>
+            <p><strong>Sortie :</strong></p>
+            <pre class="highlight"><code>nom : Alice
+age : 25
+ville : Paris</code></pre>
+
+            <h3>La boucle for avec des conditions</h3>
+            <p>Vous pouvez également ajouter des conditions dans la boucle <code>for</code> pour ne traiter certains
+                éléments que s'ils satisfont une condition.</p>
+            <pre class="example-code"><code>nombres = [1, 2, 3, 4, 5]
+                for nombre in nombres:
+                if nombre % 2 == 0:
+                 print(nombre)  # Affiche uniquement les nombres pairs</code></pre>
+            <p><strong>Sortie :</strong></p>
+            <pre class="highlight"><code>2
+            4</code></pre>
+            <section id="range">
+                <h2>Utilisation de <code>range()</code></h2>
+                <p>La fonction <code>range()</code> est couramment utilisée dans les boucles <code>for</code> pour générer une séquence d'entiers. Contrairement aux <strong>tuples</strong>, qui stockent des éléments fixes, <code>range()</code> génère des valeurs à la volée, ce qui le rend <strong>plus efficace en mémoire</strong> lorsqu'on travaille avec de longues séquences de nombres.</p>
+            
+                <h3>Exemple de boucle avec <code>range()</code> :</h3>
+                <pre><code>for i in range(5):
+                print(i)</code></pre>
+                <p>Ce code affichera :</p>
+                <pre><code>0
+            1
+            2
+            3
+            4</code></pre>
+            
+                <h3>Détails sur <code>range()</code> :</h3>
+                <ul>
+                    <li><strong>Non mutable</strong> : Un objet <code>range</code> est immuable, il ne peut pas être modifié après sa création.</li>
+                    <li><strong>Générateur d'entiers</strong> : <code>range()</code> génère des entiers dans une séquence spécifiée, mais ne stocke pas ces entiers en mémoire.</li>
+                    <li><strong>Utilisation en boucle</strong> : <code>range()</code> est souvent utilisé pour spécifier combien de fois une boucle <code>for</code> doit s'exécuter.</li>
+                </ul>
+            
+                <h3>Exemple de <code>range()</code> avec des paramètres :</h3>
+                <pre><code>for i in range(2, 10, 2):
+                print(i)</code></pre>
+                <p>Cela affiche :</p>
+                <pre><code>2
+            4
+            6
+            8</code></pre>
+                <p>Ici, la séquence commence à 2, se termine avant 10, et s'incrémente de 2 à chaque itération.</p>
+            
+                <h3>Différence avec les tuples :</h3>
+                <p>Contrairement à un <strong>tuple</strong> (qui contient des éléments prédéfinis et stockés en mémoire), <strong><code>range()</code></strong> crée les valeurs à la volée pour économiser de la mémoire, ce qui est particulièrement utile dans les boucles.</p>
+                <p>Un <strong>tuple</strong> est une structure de données statique, tandis qu'un <strong><code>range()</code></strong> est principalement un <strong>outil pour itérer</strong> et travailler avec des séquences d'entiers dans les boucles.</p>
+            </section>
+        </section>
+    </div>
+
+    <footer class="footer text-center">
+        <p>&copy; 2025 Documentation Python. Tous droits réservés.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"name": "CourPyton",
+			"path": "../.."
+		},
+		{
+			"name": "lesCollection",
+			"path": ".."
+		},
+		{
+			"name": "LesModulesDexpertises",
+			"path": "../../LesModulesDexpertises"
+		},
+		{
+			"name": "lesBases1",
+			"path": "../../lesBases1"
+		},
+		{
+			"name": "ModuleDexpertiseNotionAvance",
+			"path": "../../ModuleDexpertiseNotionAvance"
+		},
+		{
+			"name": "exoPersp",
+			"path": "../../exoPersp"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CourPyton"
+	}
+}

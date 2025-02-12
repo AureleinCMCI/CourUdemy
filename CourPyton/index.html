@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Collections en Python - Documentation</title>
+    <!-- Lien vers la bibliothèque Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        section h2 {
+            color: #007bff;
+        }
+
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .example-code {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .highlight {
+            background-color: #e9ecef;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="text-center">
+        <nav>
+            <a href="index.html">Index</a>
+            <a href="boucles.html">Boucle for</a>
+        </nav>
+        <div class="container">
+            <h1>Les Collections en Python</h1>
+            <p class="lead">Une introduction détaillée aux collections de données en Python : Listes, Tuples, Ensembles,
+                Dictionnaires, et plus encore.</p>
+        </div>
+    </header>
+
+    <section class="container content-section">
+        <section id="listes">
+            <section id="listes">
+                <h2>1. Listes</h2>
+                <p>
+                    Les <strong>listes</strong> en Python sont des collections ordonnées et modifiables.
+                    Elles permettent de stocker des éléments de différents types et de les manipuler grâce à diverses
+                    méthodes intégrées.
+                </p>
+
+                <h3>Exemple de liste simple</h3>
+                <pre class="example-code"><code>personnes = ["Alice", "Bob", "Charlie"]</code></pre>
+
+                <h3>Modification d'une liste</h3>
+                <pre class="example-code"><code>
+            personnes[1] = "Eve"
+            personnes.append("David")
+            print(personnes)
+                </code></pre>
+                <p><strong>Sortie :</strong></p>
+                <pre class="highlight"><code>['Alice', 'Eve', 'Charlie', 'David']</code></pre>
+
+                <h3>Méthodes courantes des listes</h3>
+                <ul>
+                    <li>
+                        <code>append(élément)</code>:
+                        Ajoute un élément à la fin de la liste.
+                        <pre><code>
+            fruits = ["pomme", "banane"]
+            fruits.append("orange")
+            print(fruits)
+            # Sortie : ['pomme', 'banane', 'orange']
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>insert(index, élément)</code>:
+                        Insère un élément à une position spécifique.
+                        <pre><code>
+            fruits = ["pomme", "orange"]
+            fruits.insert(1, "banane")
+            print(fruits)
+            # Sortie : ['pomme', 'banane', 'orange']
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>remove(élément)</code>:
+                        Supprime la première occurrence d'un élément.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            fruits.remove("banane")
+            print(fruits)
+            # Sortie : ['pomme', 'orange']
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>pop([index])</code>:
+                        Supprime et retourne un élément à un indice spécifique. Si aucun indice n'est précisé, retire le
+                        dernier élément.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            dernier = fruits.pop()
+            print(dernier)  # Sortie : orange
+            print(fruits)
+            # Sortie : ['pomme', 'banane']
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>clear()</code>:
+                        Supprime tous les éléments de la liste.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            fruits.clear()
+            print(fruits)
+            # Sortie : []
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>index(élément[, début, fin])</code>:
+                        Retourne l'indice de la première occurrence d'un élément. Peut lever une erreur si l'élément
+                        n'est
+                        pas trouvé.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            indice = fruits.index("banane")
+            print(indice)
+            # Sortie : 1
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>count(élément)</code>:
+                        Retourne le nombre d'occurrences d'un élément dans la liste.
+                        <pre><code>
+            fruits = ["pomme", "banane", "pomme", "orange"]
+            nb_pommes = fruits.count("pomme")
+            print(nb_pommes)
+            # Sortie : 2
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>sort(key=None, reverse=False)</code>:
+                        Trie les éléments de la liste en place.
+                        Vous pouvez spécifier un paramètre <code>key</code> pour personnaliser le tri.
+                        <pre><code>
+            nombres = [5, 2, 9, 1]
+            nombres.sort()
+            print(nombres)
+            # Sortie : [1, 2, 5, 9]
+            
+            nombres.sort(reverse=True)
+            print(nombres)
+            # Sortie : [9, 5, 2, 1]
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>reverse()</code>:
+                        Inverse l'ordre des éléments de la liste.
+                        <pre><code>
+            nombres = [1, 2, 3, 4]
+            nombres.reverse()
+            print(nombres)
+            # Sortie : [4, 3, 2, 1]
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>copy()</code>:
+                        Crée une copie superficielle de la liste.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            copie = fruits.copy()
+            print(copie)
+            # Sortie : ['pomme', 'banane', 'orange']
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>extend(itérable)</code>:
+                        Ajoute les éléments d'un itérable (liste, tuple, etc.) à la liste actuelle.
+                        <pre><code>
+            fruits = ["pomme", "banane"]
+            autres_fruits = ["orange", "kiwi"]
+            fruits.extend(autres_fruits)
+            print(fruits)
+            # Sortie : ['pomme', 'banane', 'orange', 'kiwi']
+                        </code></pre>
+                    </li>
+                </ul>
+
+                <h3>Autres opérations sur les listes</h3>
+                <p>Voici quelques opérations utiles :</p>
+                <ul>
+                    <li>
+                        <code>len(liste)</code>: Retourne le nombre d'éléments dans la liste.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            taille = len(fruits)
+            print(taille)
+            # Sortie : 3
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>in</code> et <code>not in</code>: Vérifient si un élément est présent ou absent dans une
+                        liste.
+                        <pre><code>
+            fruits = ["pomme", "banane", "orange"]
+            print("banane" in fruits)  # Sortie : True
+            print("kiwi" not in fruits)  # Sortie : True
+                        </code></pre>
+                    </li>
+                    <li>
+                        <code>+ et *</code>: Concatenation et répétition de listes.
+                        <pre><code>
+            fruits = ["pomme", "banane"]
+            autres_fruits = ["orange", "kiwi"]
+            print(fruits + autres_fruits)
+            # Sortie : ['pomme', 'banane', 'orange', 'kiwi']
+            
+            print(fruits * 2)
+            # Sortie : ['pomme', 'banane', 'pomme', 'banane']
+                        </code></pre>
+                    </li>
+                </ul>
+                <h3>Découper une chaîne de caractères avec <code>split()</code></h3>
+                <p>La méthode <code>split()</code> permet de découper une chaîne de caractères en une liste de
+                    sous-chaînes en utilisant un séparateur spécifié.</p>
+                <ul>
+                    <li>
+                        <code>split(sep=None, maxsplit=-1)</code> : Découpe la chaîne en une liste de sous-chaînes, où
+                        <code>sep</code> est le séparateur (par défaut l'espace) et <code>maxsplit</code> définit le
+                        nombre maximum de découpes.
+                        <pre><code>
+    phrase = "Bonjour tout le monde"
+    mots = phrase.split()
+    print(mots)
+    # Sortie : ['Bonjour', 'tout', 'le', 'monde']
+                    </code></pre>
+                    </li>
+                    <li>Si vous souhaitez découper la chaîne en fonction d'un caractère spécifique (par exemple, une
+                        virgule), vous pouvez le spécifier en argument :
+                        <pre><code>
+    fruits = "pomme,banane,orange"
+    fruits_list = fruits.split(",")
+    print(fruits_list)
+    # Sortie : ['pomme', 'banane', 'orange']
+        </code></pre>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h2>1.1FONCTION-LISTES</h2>
+                <p>
+                    Les fonctions en Python permettent de manipuler les listes ou d'autres structures telles que les
+                    tuples. Voici un exemple d'utilisation de fonctions qui retournent des tuples et comment les
+                    exploiter.
+                </p>
+                <h3>Exemple avec une fonction qui retourne un tuple</h3>
+                <pre class="example-code"><code>
+        def obtenir():
+            return "melain", 37, 1.60
+        
+        # Déstructuration du tuple directement dans des variables
+        nom, age, taille = obtenir()
+        print(f"nom: {nom}, age: {age}, taille: {taille}")
+            </code></pre>
+
+                <h3>Exemple avec deux fonctions</h3>
+                <pre class="example-code"><code>
+        def obtenir():
+            return "melain", 37, 1.60
+        
+        def afficher_info(nom, age, taille):
+            print(f"nom: {nom}, age: {age}, taille: {taille}")
+        
+        # Appel des fonctions
+        nom, age, taille = obtenir()
+        afficher_info(nom, age, taille)
+            </code></pre>
+
+                <h3>Autre méthode</h3>
+                <pre class="example-code"><code>
+        def obtenir():
+            return "melain", 37, 1.60
+        
+        def afficher_info(nom, age, taille):
+            print(f"nom: {nom}, age: {age}, taille: {taille}")
+        
+        # Utilisation de l'opérateur de déstructuration (*)
+        infos = obtenir()
+        afficher_info(*infos)
+            </code></pre>
+                <p>
+                    Ces exemples montrent comment exploiter les fonctions pour retourner et manipuler des tuples en
+                    Python.
+                </p>
+            </section>
+            <section>
+                <section>
+                    <h2>1.2 Les Slices</h2>
+                    <p>
+                        Les slices en Python permettent d'extraire une portion d'une séquence (comme une liste, une
+                        chaîne de caractères ou un tuple). Ils utilisent la syntaxe <code>[début:fin:pas]</code>.
+                    </p>
+
+                    <h3>Syntaxe générale</h3>
+                    <ul>
+                        <li><code>début</code> (optionnel) : L'indice où commencer la tranche (inclus).</li>
+                        <li><code>fin</code> (optionnel) : L'indice où terminer la tranche (exclus).</li>
+                        <li><code>pas</code> (optionnel) : L'incrément entre chaque élément.</li>
+                    </ul>
+
+                    <h3>Exemples</h3>
+                    <pre class="example-code"><code>
+            # Exemple de slice simple
+            liste = [0, 1, 2, 3, 4, 5]
+            print(liste[1:4])  # Sortie : [1, 2, 3]
+            
+            # Slice avec un pas
+            print(liste[::2])  # Sortie : [0, 2, 4]
+            
+            # Slice avec indices négatifs
+            print(liste[-4:-1])  # Sortie : [2, 3, 4]
+            
+            # Slice inversé
+            print(liste[::-1])  # Sortie : [5, 4, 3, 2, 1, 0]
+                </code></pre>
+
+                    <h3>Applications courantes</h3>
+                    <ul>
+                        <li><strong>Extraire une sous-liste</strong> :
+                            <pre class="example-code"><code>
+            nombres = [10, 20, 30, 40, 50]
+            sous_liste = nombres[1:4]
+            print(sous_liste)
+            # Sortie : [20, 30, 40]
+                        </code></pre>
+                        </li>
+                        <li><strong>Copier une liste</strong> :
+                            <pre class="example-code"><code>
+            nombres = [10, 20, 30]
+            copie = nombres[:]
+            print(copie)
+            # Sortie : [10, 20, 30]
+                        </code></pre>
+                        </li>
+                        <li><strong>Inverser une liste</strong> :
+                            <pre class="example-code"><code>
+            nombres = [1, 2, 3]
+            inverse = nombres[::-1]
+            print(inverse)
+            # Sortie : [3, 2, 1]
+                        </code></pre>
+                        </li>
+                    </ul>
+
+                    <h3>Travailler avec des chaînes</h3>
+                    <pre class="example-code"><code>
+            texte = "Python"
+            print(texte[1:4])  # Sortie : yth
+            print(texte[::-1]) # Sortie : nohtyP
+                </code></pre>
+
+                    <h3>Travailler avec des tuples</h3>
+                    <pre class="example-code"><code>
+            tuples = (10, 20, 30, 40)
+            print(tuples[1:3])  # Sortie : (20, 30)
+            print(tuples[::-1]) # Sortie : (40, 30, 20, 10)
+                </code></pre>
+
+                    <p>
+                        Les slices sont puissants pour manipuler des séquences de manière concise et élégante.
+                    </p>
+                </section>
+
+
+                <section>
+
+                    <section id="tuples">
+                        <h2>2. Tuples</h2>
+                        <p>Les <strong>tuples</strong> sont des collections immuables, ce qui signifie que leurs
+                            éléments ne peuvent
+                            pas être modifiés après leur création. Ils sont définis par des parenthèses.</p>
+
+                        <h3>Exemple de tuple simple</h3>
+                        <pre class="example-code"><code>personnes = ("Alice", "Bob", "Charlie")</code></pre>
+
+                        <h3>Immuabilité des tuples</h3>
+                        <p>Les tuples ne peuvent pas être modifiés une fois créés. Tenter de modifier un élément d'un
+                            tuple
+                            entraînera une erreur.</p>
+                        <pre class="example-code"><code>personnes[1] = "Eve"  # Cela génère une erreur</code></pre>
+
+                        <h3>Méthodes des tuples</h3>
+                        <ul>
+                            <li><code>count()</code>: Compte combien de fois un élément apparaît dans un tuple.</li>
+                            <li><code>index()</code>: Renvoie l'indice du premier élément trouvé dans un tuple.</li>
+                        </ul>
+
+                        <h3>Parcourir un Tuple avec une Boucle for</h3>
+                        <p>Une méthode très pratique pour parcourir un tuple est d'utiliser une boucle <code>for</code>.
+                            Cela permet
+                            de récupérer chaque élément du tuple sans se soucier des indices. Voici un exemple :</p>
+
+                        <pre class="example-code"><code>personnes = ("Mélanie", "jean", "marti", "Alice")
+        
+        # Parcours du tuple avec une boucle for
+        for i in personnes:
+            print(i)
+            print(len(i))  # Affiche la longueur de chaque élément du tuple
+            print(i[0])    # Affiche le premier caractère de chaque élément du tuple</code></pre>
+
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>Mélanie
+        7
+        M
+        jean
+        4
+        j
+        marti
+        5
+        m
+        Alice
+        5
+        A</code></pre>
+
+                        <p>Dans cet exemple, la boucle <code>for</code> parcourt chaque élément du tuple et, pour chaque
+                            élément :
+                        </p>
+                        <ul>
+                            <li><code>print(i)</code> affiche l'élément lui-même.</li>
+                            <li><code>print(len(i))</code> affiche la longueur de l'élément, c'est-à-dire le nombre de
+                                caractères
+                                dans chaque nom.</li>
+                            <li><code>print(i[0])</code> affiche le premier caractère de chaque élément du tuple.</li>
+                        </ul>
+                    </section>
+
+
+                    <section id="dictionnaires">
+                        <h2>4. Dictionnaires</h2>
+                        <p>Les <strong>dictionnaires</strong><h3>Utilité des Dictionnaires</h3>
+                            <p>Les dictionnaires sont utilisés pour stocker des données de manière structurée et efficace. Contrairement aux listes, qui utilisent des indices numériques pour accéder aux éléments, les dictionnaires utilisent des clés uniques pour accéder à leurs valeurs correspondantes. Cette approche permet un accès rapide et intuitif aux données, ce qui est particulièrement utile lorsque les relations entre les éléments ne sont pas strictement séquentielles. Voici quelques points clés de leur utilité :</p>
+                            
+                            <h4>Stockage Structuré</h4>
+                            <p>Les dictionnaires permettent de stocker des données de manière organisée, en utilisant des clés pour identifier chaque valeur. Cela simplifie l'accès et la gestion des données, surtout lorsque les données sont complexes ou imbriquées.</p>
+                            
+                            <h4>Recherche Rapide</h4>
+                            <p>Les dictionnaires offrent un accès très rapide aux données grâce à l'utilisation de clés uniques. Rechercher une valeur à l'aide de sa clé est beaucoup plus rapide que de parcourir une liste pour trouver un élément.</p>
+                            
+                            <h4>Flexibilité</h4>
+                            <p>Les dictionnaires peuvent contenir des données de types variés (entiers, chaînes de caractères, listes, autres dictionnaires, etc.). Cette flexibilité permet de modéliser des relations de données complexes de manière simple et intuitive.</p>
+                        
+                            <!-- Section Pourquoi utiliser des Dictionnaires ? -->
+                            <h3>Pourquoi utiliser des Dictionnaires ?</h3>
+                            <h4>Simplicité et Lisibilité</h4>
+                            <p>Les dictionnaires rendent le code plus lisible et facile à comprendre en utilisant des clés significatives au lieu d'indices numériques. Cela aide à rendre le code auto-documenté et plus facile à maintenir.</p>
+                            
+                            <h4>Performance</h4>
+                            <p>En raison de leur implémentation basée sur des tables de hachage, les opérations de recherche, d'ajout et de suppression dans un dictionnaire sont très rapides. Cela rend les dictionnaires particulièrement efficaces pour les applications nécessitant des accès fréquents aux données.</p>
+                            
+                            <h4>Organisation des Données</h4>
+                            <p>Les dictionnaires sont idéaux pour organiser des données en paires clé-valeur. Cela est particulièrement utile dans des situations où chaque élément de donnée a une signification unique, comme un répertoire de contacts, où chaque contact a un nom unique (clé) et des informations associées (valeur).</p>
+                        
+                            <!-- Section Quand utiliser des Dictionnaires ? -->
+                            <h3>Quand utiliser des Dictionnaires ?</h3>
+                            <h4>Association Clé-Valeur</h4>
+                            <p>Utilisez des dictionnaires lorsque vous avez besoin d'associer des valeurs à des clés uniques. Par exemple, dans un répertoire téléphonique, vous pouvez utiliser les noms comme clés et les numéros de téléphone comme valeurs.</p>
+                            
+                            <h4>Données Non Séquentielles</h4>
+                            <p>Lorsque les données ne suivent pas un ordre séquentiel ou lorsque l'ordre n'a pas d'importance, les dictionnaires sont plus appropriés que les listes. Par exemple, pour stocker des paramètres de configuration, où chaque paramètre a un nom unique.</p>
+                            
+                            <h4>Manipulation de Données JSON</h4>
+                            <p>Les dictionnaires sont souvent utilisés pour manipuler des données au format JSON. Les structures JSON peuvent être directement converties en dictionnaires Python, ce qui facilite leur manipulation et leur traitement.</p>
+                            
+                            <h4>Comptage et Agrégation</h4>
+                            <p>Les dictionnaires sont utiles pour compter la fréquence des éléments dans une collection. Par exemple, pour compter le nombre d'occurrences de chaque mot dans un texte, vous pouvez utiliser les mots comme clés et leurs fréquences comme valeurs.</p>
+                            
+                            <h4>Modélisation de Graphes</h4>
+                            <p>Dans les algorithmes de graphes, les dictionnaires sont utilisés pour représenter les relations entre les nœuds. Les nœuds peuvent être représentés comme des clés et leurs voisins comme des valeurs.</p></p>
+
+                        <h3>Exemple de dictionnaire simple</h3>
+                        <pre
+                            class="example-code"><code>personne = {"nom": "Alice", "age": 25, "ville": "Paris"}</code></pre>
+
+                        <h3>Accès aux valeurs d'un dictionnaire</h3>
+                        <pre
+                            class="example-code"><code>print(personne["nom"])  # Accès à la valeur de la clé "nom"</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>Alice</code></pre>
+
+                        <h3>Méthodes des dictionnaires</h3>
+                        <ul>
+                            <li><code>get()</code>: Accède à la valeur d'une clé sans lever d'erreur si la clé n'existe
+                                pas.
+                                <pre
+                                    class="example-code"><code>print(personne.get("profession", "Non spécifié"))  # Accède à la valeur de la clé "profession" ou renvoie "Non spécifié" si la clé n'existe pas.</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>Non spécifié</code></pre>
+                            </li>
+                            <li><code>keys()</code>: Renvoie toutes les clés d'un dictionnaire.
+                                <pre
+                                    class="example-code"><code>print(personne.keys())  # Renvoie toutes les clés du dictionnaire</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>dict_keys(['nom', 'age', 'ville'])</code></pre>
+                            </li>
+                            <li><code>values()</code>: Renvoie toutes les valeurs d'un dictionnaire.
+                                <pre
+                                    class="example-code"><code>print(personne.values())  # Renvoie toutes les valeurs du dictionnaire</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>dict_values(['Alice', 25, 'Paris'])</code></pre>
+                            </li>
+                            <li><code>items()</code>: Renvoie une vue de toutes les paires clé-valeur.
+                                <pre
+                                    class="example-code"><code>print(personne.items())  # Renvoie toutes les paires clé-valeur</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre
+                                    class="highlight"><code>dict_items([('nom', 'Alice'), ('age', 25), ('ville', 'Paris')])</code></pre>
+                            </li>
+                            <li><code>update()</code>: Met à jour le dictionnaire avec les paires clé-valeur fournies.
+                                <pre
+                                    class="example-code"><code>personne.update({"age": 26, "profession": "ingénieur"})  # Met à jour les valeurs du dictionnaire</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre
+                                    class="highlight"><code>{'nom': 'Alice', 'age': 26, 'ville': 'Paris', 'profession': 'ingénieur'}</code></pre>
+                            </li>
+                            <li><code>pop()</code>: Supprime l'élément avec la clé spécifiée et renvoie sa valeur.
+                                <pre
+                                    class="example-code"><code>age = personne.pop("age")  # Supprime et renvoie la valeur de la clé "age"</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>26</code></pre>
+                                <pre
+                                    class="highlight"><code>{'nom': 'Alice', 'ville': 'Paris', 'profession': 'ingénieur'}</code></pre>
+                            </li>
+                            <li><code>popitem()</code>: Supprime et renvoie une paire clé-valeur aléatoire du
+                                dictionnaire.
+                                <pre
+                                    class="example-code"><code>element_aleatoire = personne.popitem()  # Supprime et renvoie une paire clé-valeur aléatoire</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>('profession', 'ingénieur')</code></pre>
+                                <pre class="highlight"><code>{'nom': 'Alice', 'ville': 'Paris'}</code></pre>
+                            </li>
+                            <li><code>clear()</code>: Supprime tous les éléments du dictionnaire.
+                                <pre
+                                    class="example-code"><code>personne.clear()  # Supprime tous les éléments</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>{}</code></pre>
+                            </li>
+                            <li><code>copy()</code>: Renvoie une copie superficielle du dictionnaire.
+                                <pre
+                                    class="example-code"><code>personne_copie = personne.copy()  # Renvoie une copie du dictionnaire</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>{'nom': 'Alice', 'age': 25, 'ville': 'Paris'}</code></pre>
+                            </li>
+                            <li><code>del</code>: Supprime une paire clé-valeur spécifiée.
+                                <pre
+                                    class="example-code"><code>del personne["age"]  # Supprime la paire clé-valeur avec la clé "age"</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre
+                                    class="highlight"><code>{'nom': 'Alice', 'ville': 'Paris', 'profession': 'ingénieur'}</code></pre>
+                            </li>
+                        </ul>
+
+                        <h3>Ajouter ou remplacer une clé/valeur dans un dictionnaire</h3>
+                        <pre class="example-code"><code>personne["profession"] = "ingénieur"  # Ajoute une nouvelle clé/valeur
+                    personne["age"] = 26  # Remplace la valeur de la clé "age"</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>{'nom': 'Alice', 'age': 26, 'ville': 'Paris', 'profession': 'ingénieur'}</code></pre>
+
+                        <h3>Itérer dans un dictionnaire</h3>
+                        <ul>
+                            <li>Itération sur les clés :
+                                <pre class="example-code"><code>for cle in personne.keys(): print(cle)</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>nom
+                    ville
+                    profession</code></pre>
+                            </li>
+                            <li>Itération sur les valeurs :
+                                <pre
+                                    class="example-code"><code>for valeur in personne.values(): print(valeur)</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>Alice
+                    Paris
+                    ingénieur</code></pre>
+                            </li>
+                            <li>Itération sur les paires clé-valeur :
+                                <pre
+                                    class="example-code"><code>for cle, valeur in personne.items(): print(f"{cle}: {valeur}")</code></pre>
+                                <p><strong>Sortie :</strong></p>
+                                <pre class="highlight"><code>nom: Alice
+                    ville: Paris
+                    profession: ingénieur</code></pre>
+                            </li>
+                        </ul>
+
+                        <h3>Fonctions utilisant des méthodes spécifiques pour les dictionnaires</h3>
+                        <pre class="example-code"><code>
+                    def afficher_informations(dictionnaire):
+                        for cle, valeur in dictionnaire.items():
+                            print(f"{cle}: {valeur}")
+                    
+                    def ajouter_element(dictionnaire, cle, valeur):
+                        dictionnaire[cle] = valeur
+                    
+                    def supprimer_element(dictionnaire, cle):
+                        if cle in dictionnaire:
+                            dictionnaire.pop(cle)
+                        else:
+                            print("La clé n'existe pas dans le dictionnaire.")
+                    
+                    def obtenir_cle(dictionnaire, cle):
+                        return dictionnaire.get(cle, "Clé non trouvée")
+                    
+                    # Exemples d'utilisation des fonctions
+                    personne = {"nom": "Alice", "age": 25, "ville": "Paris"}
+                    afficher_informations(personne)  # Affiche toutes les informations du dictionnaire
+                    # Sortie : 
+                    # nom: Alice
+                    # age: 25
+                    # ville: Paris
+                    
+                    ajouter_element(personne, "profession", "ingénieur")
+                    print(personne)  # Ajoute la clé "profession" avec la valeur "ingénieur" au dictionnaire
+                    # Sortie : {'nom': 'Alice', 'age': 25, 'ville': 'Paris', 'profession': 'ingénieur'}
+                    
+                    supprimer_element(personne, "age")
+                    print(personne)  # Supprime la clé "age" du dictionnaire
+                    # Sortie : {'nom': 'Alice', 'ville': 'Paris', 'profession': profession: ingénieur'}
+
+                    print(obtenir_cle(personne, "ville"))  # Obtient la valeur associée à la clé "ville"
+                    # Sortie : Paris
+                    
+                    print(obtenir_cle(personne, "age"))  # Tente d'obtenir la valeur associée à la clé "age"
+                    # Sortie : Clé non trouvée
+                    </code></pre>
+
+
+                        <h3>Multiplier les valeurs d'un dictionnaire par 2</h3>
+                        <p>Il est parfois nécessaire de modifier les valeurs d'un dictionnaire en appliquant une
+                            opération à chaque valeur. Pour multiplier toutes les valeurs par 2, vous pouvez utiliser la
+                            fonction suivante :</p>
+                        <pre class="example-code"><code>
+def multiplier_valeurs_par_deux(dictionnaire):
+    for cle in dictionnaire:
+        dictionnaire[cle] *= 2
+    </code></pre>
+                        <p>Exemple d'utilisation :</p>
+                        <pre class="example-code"><code>
+a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+multiplier_valeurs_par_deux(a_dictionary)
+print(a_dictionary)
+    </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>{'John': 24, 'Alex': 16, 'Bob': 28, 'Mike': 28, 'Molly': 32}</code></pre>
+
+                        <p>La fonction <code>multiplier_valeurs_par_deux</code> parcourt chaque clé du dictionnaire et
+                            multiplie la valeur correspondante par 2. Ainsi, le dictionnaire initial est modifié avec
+                            les nouvelles valeurs.</p>
+
+                        <h3>Autre méthode : création d'un nouveau dictionnaire</h3>
+                        <p>Si vous souhaitez conserver le dictionnaire original intact, vous pouvez créer un nouveau
+                            dictionnaire avec les valeurs multipliées par 2 :</p>
+                        <pre class="example-code"><code>
+def multiplier_valeurs_par_deux_nouveau(dictionnaire):
+    nouveau_dictionnaire = {cle: valeur * 2 for cle, valeur in dictionnaire.items()}
+    return nouveau_dictionnaire
+    </code></pre>
+                        <p>Exemple d'utilisation :</p>
+                        <pre class="example-code"><code>
+a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+nouveau_dico = multiplier_valeurs_par_deux_nouveau(a_dictionary)
+print(nouveau_dico)
+print(a_dictionary)  # Le dictionnaire original reste inchangé
+    </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{'John': 24, 'Alex': 16, 'Bob': 28, 'Mike': 28, 'Molly': 32}
+{'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}</code></pre>
+
+                        <p>Cette méthode utilise une compréhension de dictionnaire pour créer un nouveau dictionnaire
+                            avec les valeurs multipliées par 2, sans modifier le dictionnaire original.</p>
+
+                        <h3>Trouver la clé avec la plus grande valeur entière</h3>
+                        <p>Il est souvent utile de trouver la clé associée à la plus grande valeur dans un dictionnaire,
+                            en particulier lorsque les valeurs sont des entiers ou des nombres.</p>
+
+                        <h4>Méthode avec la fonction <code>max()</code></h4>
+                        <p>Vous pouvez utiliser la fonction intégrée <code>max()</code> avec le paramètre
+                            <code>key</code> pour obtenir la clé ayant la plus grande valeur :
+                        </p>
+                        <pre class="example-code"><code>
+                        a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+                        cle_max = max(a_dictionary, key=a_dictionary.get)
+                        print("La clé avec la plus grande valeur est :", cle_max)
+                            </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>La clé avec la plus grande valeur est : Molly</code></pre>
+
+                        <p>La fonction <code>max()</code> parcourt les clés du dictionnaire et utilise la méthode
+                            <code>get</code> pour comparer les valeurs associées à chaque clé.
+                        </p>
+
+                        <h4>Méthode en trouvant la valeur maximale puis la clé associée</h4>
+                        <p>Vous pouvez également trouver la valeur maximale puis parcourir le dictionnaire pour trouver
+                            la clé associée :</p>
+                        <pre class="example-code"><code>
+                        a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+                        valeur_max = max(a_dictionary.values())
+                        for cle, valeur in a_dictionary.items():
+                            if valeur == valeur_max:
+                                print("La clé avec la plus grande valeur est :", cle)
+                                break
+                            </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>La clé avec la plus grande valeur est : Molly</code></pre>
+
+                        <p>Cette méthode est utile si plusieurs clés peuvent avoir la même valeur maximale et que vous
+                            souhaitez contrôler la manière dont vous gérez ces cas.</p>
+
+                        <h4>Gérer plusieurs clés avec la même valeur maximale</h4>
+                        <p>Si plusieurs clés ont la même valeur maximale, vous pouvez les récupérer toutes :</p>
+                        <pre class="example-code"><code>
+                        a_dictionary = {'John': 16, 'Alex': 8, 'Bob': 14, 'Mike': 16, 'Molly': 16}
+                        valeur_max = max(a_dictionary.values())
+                        cles_max = [cle for cle, valeur in a_dictionary.items() if valeur == valeur_max]
+                        print("Les clés avec la valeur maximale sont :", cles_max)
+                            </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>Les clés avec la valeur maximale sont : ['John', 'Mike', 'Molly']</code></pre>
+
+                        <p>Cette approche utilise une compréhension de liste pour collecter toutes les clés dont la
+                            valeur correspond à la valeur maximale.</p>
+
+                        <h4>Fonction utilitaire</h4>
+                        <p>Vous pouvez créer une fonction réutilisable pour cette opération :</p>
+                        <pre class="example-code"><code>
+                        def trouver_cle_max(dictionnaire):
+                            valeur_max = max(dictionnaire.values())
+                            cles_max = [cle for cle, valeur in dictionnaire.items() if valeur == valeur_max]
+                            return cles_max
+                        
+                        # Exemple d'utilisation
+                        a_dictionary = {'John': 16, 'Alex': 8, 'Bob': 14, 'Mike': 16, 'Molly': 16}
+                        cles_max = trouver_cle_max(a_dictionary)
+                        print("Les clés avec la valeur maximale sont :", cles_max)
+                            </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>Les clés avec la valeur maximale sont : ['John', 'Mike', 'Molly']</code></pre>
+
+                        <p>Cette fonction renvoie une liste de clés associées à la valeur maximale, ce qui vous permet
+                            de gérer facilement les cas où plusieurs éléments partagent la même valeur élevée.</p>
+
+                        <h4>Exemple avec tri des clés</h4>
+                        <p>Si vous souhaitez obtenir la première clé selon un ordre spécifique lorsque plusieurs clés
+                            ont la même valeur maximale, vous pouvez trier les clés :</p>
+                        <pre class="example-code"><code>
+                        a_dictionary = {'John': 16, 'Alex': 8, 'Bob': 14, 'Mike': 16, 'Molly': 16}
+                        cle_max = max(sorted(a_dictionary), key=a_dictionary.get)
+                        print("La première clé avec la plus grande valeur est :", cle_max)
+                            </code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>La première clé avec la plus grande valeur est : John</code></pre>
+
+                        <p>Ici, les clés sont triées avant d'appliquer la fonction <code>max()</code>, ce qui influence
+                            le résultat lorsqu'il y a des ex æquo.</p>
+
+                        <h4>Attention aux types de valeurs</h4>
+                        <p>Assurez-vous que les valeurs du dictionnaire sont des nombres entiers (ou du même type) pour
+                            éviter les erreurs lors de la comparaison :</p>
+                        <pre class="example-code"><code>
+                        a_dictionary = {'John': 12, 'Alex': '8', 'Bob': 14}
+                        # Ceci provoquera une erreur car '8' est une chaîne de caractères
+                        # cle_max = max(a_dictionary, key=a_dictionary.get)
+                        # Pour corriger :
+                        a_dictionary['Alex'] = int(a_dictionary['Alex'])
+                        cle_max = max(a_dictionary, key=a_dictionary.get)
+                        print("La clé avec la plus grande valeur est :", cle_max)
+                            </code></pre>
+                    </section>
+
+
+
+                    <h3>Multiplier les valeurs d'un dictionnaire par un nombre sans boucle</h3>
+                    <p>Il est possible de multiplier les valeurs d'un dictionnaire par un nombre sans utiliser de boucle
+                        en utilisant une compréhension de liste.</p>
+
+                    <h4>Fonction utilisant la compréhension de liste</h4>
+                    <p>Voici une fonction qui prend un dictionnaire et un nombre, et renvoie une liste contenant toutes
+                        les valeurs multipliées par ce nombre :</p>
+                    <pre class="example-code"><code>
+def multiplier_valeurs_sans_boucle(dictionnaire, nombre):
+    return [valeur * nombre for valeur in dictionnaire.values()]
+    </code></pre>
+                    <p>Exemple d'utilisation :</p>
+                    <pre class="example-code"><code>
+a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+resultat = multiplier_valeurs_sans_boucle(a_dictionary, 2)
+print(resultat)
+    </code></pre>
+                    <p><strong>Sortie :</strong></p>
+                    <pre class="highlight"><code>[24, 16, 28, 28, 32]</code></pre>
+
+                    <p>La fonction <code>multiplier_valeurs_sans_boucle</code> utilise une compréhension de liste pour
+                        itérer sur les valeurs du dictionnaire et les multiplier par le nombre donné, renvoyant une
+                        nouvelle liste.</p>
+                    <h3>Multiplier les valeurs d'une liste par un nombre sans boucle</h3>
+                    <p>Il est possible de multiplier les valeurs d'une liste par un nombre sans utiliser de boucle, en
+                        utilisant la fonction <code>map</code>.</p>
+
+                    <h4>Fonction utilisant <code>map</code></h4>
+                    <p>Voici une fonction qui prend une liste et un nombre, et renvoie une liste contenant toutes les
+                        valeurs multipliées par ce nombre :</p>
+                    <pre class="example-code"><code>
+def multiply_list_map(my_list=[], number=0):
+    return list(map(lambda x: x * number, my_list))
+    </code></pre>
+                    <p>Exemple d'utilisation :</p>
+                    <pre class="example-code"><code>
+my_list = [1, 2, 3, 4, 5]
+resultat = multiply_list_map(my_list, 2)
+print(resultat)
+    </code></pre>
+                    <p><strong>Sortie :</strong></p>
+                    <pre class="highlight"><code>[2, 4, 6, 8, 10]</code></pre>
+
+                    <p>La fonction <code>multiply_list_map</code> utilise la fonction <code>map</code> avec une fonction
+                        <code>lambda</code> pour multiplier chaque élément de <code>my_list</code> par
+                        <code>number</code>, et renvoie le résultat sous forme de nouvelle liste. La liste initiale
+                        <code>my_list</code> reste inchangée.</p>
+
+                        <h3>Convertir un chiffre romain en nombre entier</h3>
+                        <p>Cette méthode prend en entrée une chaîne de caractères représentant un chiffre romain et renvoie un nombre entier correspondant.</p>
+                    
+                        <h4>Fonction pour convertir un chiffre romain en nombre entier</h4>
+                        <pre class="example-code"><code>
+                    def roman_to_int(s):
+                        romain = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+                        num = 0
+                        for i in range(len(s)):
+                            if i > 0 and romain[s[i]] > romain[s[i - 1]]:
+                                num += romain[s[i]] - 2 * romain[s[i - 1]]
+                            else:
+                                num += romain[s[i]]
+                        return num
+                        </code></pre>
+                        
+                        <h4>Exemple d'utilisation</h4>
+                        <pre class="example-code"><code>
+                    print(roman_to_int('III'))     # 3
+                    print(roman_to_int('IV'))      # 4
+                    print(roman_to_int('IX'))      # 9
+                    print(roman_to_int('LVIII'))   # 58
+                    print(roman_to_int('MCMXCIV')) # 1994
+                        </code></pre>
+                    
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>
+                    3
+                    4
+                    9
+                    58
+                    1994
+                    </code></pre>   
+                    <section id="collections_specialisees">
+                        <h2>5. Collections Spécialisées</h2>
+                        <p>Python propose des collections spécialisées dans le module <code>collections</code> qui
+                            offrent des
+                            fonctionnalités avancées pour travailler avec des données complexes.</p>
+
+                        <h3>5.1 Namedtuple</h3>
+                        <p>Les <strong>namedtuple</strong> permettent de créer des tuples avec des champs nommés,
+                            rendant le code
+                            plus lisible.</p>
+                        <pre class="example-code"><code>from collections import namedtuple
+
+Personne = namedtuple('Personne', ['nom', 'age', 'ville'])
+alice = Personne(nom="Alice", age=25, ville="Paris")
+print(alice.nom)</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>Alice</code></pre>
+
+                        <h3>5.2 Deque</h3>
+                        <p>La <strong>deque</strong> est une file d'attente qui permet d'ajouter et de supprimer des
+                            éléments à ses
+                            deux extrémités efficacement.</p>
+                        <pre class="example-code"><code>from collections import deque
+
+queue = deque([1, 2, 3])
+queue.append(4)
+queue.appendleft(0)
+print(queue)</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>deque([0, 1, 2, 3, 4])</code></pre>
+                    </section>
+                    <section id="travailler_avec_donnees_complexes">
+                        <h2>6. Travailler avec des Données Complexes</h2>
+                        <p>Les collections en Python sont idéales pour manipuler des ensembles de données complexes.
+                            Nous allons
+                            explorer comment manipuler des données imbriquées et comment combiner différentes
+                            collections.</p>
+
+                        <h3>6.1 Listes de Dictionnaires</h3>
+                        <p>Vous pouvez combiner des listes et des dictionnaires pour créer des structures de données
+                            complexes. Par
+                            exemple, si vous devez stocker des informations sur plusieurs personnes, vous pouvez
+                            utiliser une liste
+                            de dictionnaires.</p>
+                        <pre class="example-code"><code>personnes = [
+    {"nom": "Alice", "age": 25, "ville": "Paris"},
+    {"nom": "Bob", "age": 30, "ville": "Lyon"},
+    {"nom": "Charlie", "age": 35, "ville": "Marseille"}
+]
+</code></pre>
+                        <p>Accéder aux données dans cette structure est facile grâce aux clés des dictionnaires :</p>
+                        <pre class="example-code"><code>for personne in personnes:
+    print(personne["nom"], personne["age"])
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>Alice 25
+Bob 30
+Charlie 35</code></pre>
+
+                        <h3>6.2 Tuples dans des Listes</h3>
+                        <p>Il est courant d'utiliser des tuples dans des listes lorsque vous devez stocker des ensembles
+                            de valeurs
+                            fixes. Par exemple, une liste de tuples pour représenter des coordonnées :</p>
+                        <pre class="example-code"><code>coordonnees = [(1, 2), (3, 4), (5, 6)]
+for coord in coordonnees:
+    print(f"X: {coord[0]}, Y: {coord[1]}")
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>X: 1, Y: 2
+X: 3, Y: 4
+X: 5, Y: 6</code></pre>
+
+                        <h3>6.3 Sets dans des Dictionnaires</h3>
+                        <p>Vous pouvez utiliser des sets dans des dictionnaires pour garantir l'unicité des éléments
+                            dans chaque
+                            clé. Voici un exemple où chaque catégorie de fruits contient un ensemble de couleurs uniques
+                            :</p>
+                        <pre class="example-code"><code>fruits = {
+    "pommes": {"rouge", "vert", "jaune"},
+    "bananes": {"jaune", "vert"},
+    "oranges": {"orange"}
+}
+</code></pre>
+                        <p>Accédez à un set dans un dictionnaire :</p>
+                        <pre class="example-code"><code>for fruit, couleurs in fruits.items():
+    print(f"{fruit}: {', '.join(couleurs)}")
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>pommes: rouge, vert, jaune
+bananes: jaune, vert
+oranges: orange</code></pre>
+                    </section>
+                    <h3>Multiplier les valeurs d'un dictionnaire par un nombre sans boucle</h3>
+                    <p>Il est possible de multiplier les valeurs d'un dictionnaire par un nombre sans utiliser de boucle
+                        en utilisant une compréhension de liste.</p>
+
+                    <h4>Fonction utilisant la compréhension de liste</h4>
+                    <p>Voici une fonction qui prend un dictionnaire et un nombre, et renvoie une liste contenant toutes
+                        les valeurs multipliées par ce nombre :</p>
+                    <pre class="example-code"><code>
+def multiplier_valeurs_sans_boucle(dictionnaire, nombre):
+    return [valeur * nombre for valeur in dictionnaire.values()]
+    </code></pre>
+                    <p>Exemple d'utilisation :</p>
+                    <pre class="example-code"><code>
+a_dictionary = {'John': 12, 'Alex': 8, 'Bob': 14, 'Mike': 14, 'Molly': 16}
+resultat = multiplier_valeurs_sans_boucle(a_dictionary, 2)
+print(resultat)
+    </code></pre>
+                    <p><strong>Sortie :</strong></p>
+                    <pre class="highlight"><code>[24, 16, 28, 28, 32]</code></pre>
+
+                    <p>La fonction <code>multiplier_valeurs_sans_boucle</code> utilise
+                    <section id="exemples_avances">
+                        <h2>7. Exemples Avancés</h2>
+                        <p>Les collections peuvent être utilisées dans une variété de scénarios plus complexes. Nous
+                            allons
+                            maintenant examiner quelques exemples avancés de manipulations de collections dans Python.
+                        </p>
+
+                        <h3>7.1 Tri et Filtrage d'une Liste d'Objets</h3>
+                        <p>Supposons que vous ayez une liste d'objets complexes et que vous souhaitiez trier cette liste
+                            ou
+                            appliquer un filtre. Vous pouvez le faire facilement avec des fonctions comme
+                            <code>sorted()</code> et
+                            <code>filter()</code>.
+                        </p>
+                        <pre class="example-code"><code>class Personne:
+    def __init__(self, nom, age):
+        self.nom = nom
+        self.age = age
+
+    def __repr__(self):
+        return f"{self.nom} ({self.age})"
+
+personnes = [
+    Personne("Alice", 25),
+    Personne("Bob", 30),
+    Personne("Charlie", 35)
+]
+
+# Trier les personnes par âge
+personnes_triees = sorted(personnes, key=lambda p: p.age)
+print(personnes_triees)
+
+# Filtrer les personnes de plus de 30 ans
+personnes_filtrees = filter(lambda p: p.age > 30, personnes)
+print(list(personnes_filtrees))
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>[Alice (25), Bob (30), Charlie (35)]
+[Charlie (35)]</code></pre>
+
+                        <h3>7.2 Utilisation de collections pour les Comptages et Statistiques</h3>
+                        <p>Les collections spécialisées, comme <code>Counter</code>, sont idéales pour effectuer des
+                            comptages ou
+                            des statistiques sur les données.</p>
+                        <pre class="example-code"><code>from collections import Counter
+
+nombres = [1, 2, 3, 1, 2, 1, 1]
+compte = Counter(nombres)
+print(compte)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>Counter({1: 4, 2: 2, 3: 1})</code></pre>
+
+                        <h3>7.3 Enregistrement des Données avec defaultdict</h3>
+                        <p>Imaginons que vous deviez enregistrer les occurrences de mots dans un texte.
+                            <code>defaultdict</code> est
+                            idéal pour cela, car il vous permet de spécifier un type de valeur par défaut pour éviter
+                            les erreurs
+                            lorsque des clés inconnues sont rencontrées.
+                        </p>
+                        <pre class="example-code"><code>from collections import defaultdict
+
+texte = "le python est un langage puissant le python est utilisé pour l'analyse de données"
+compteur_mots = defaultdict(int)
+
+for mot in texte.split():
+    compteur_mots[mot] += 1
+
+print(compteur_mots)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>defaultdict(<class 'int'>, {'le': 2, 'python': 2, 'est': 2, 'un': 1, 'langage': 1, 'puissant': 1, 'utilisé': 1, 'pour': 1, 'l'analyse': 1, 'de': 1, 'données': 1})</code></pre>
+                    </section>
+
+                    <section id="astuces">
+                        <h2>8. Astuces pour Optimiser l'Utilisation des Collections</h2>
+                        <p>Voici quelques astuces pour utiliser les collections de manière plus efficace dans vos
+                            programmes Python.
+                        </p>
+
+                        <h3>8.1 Utiliser des Listes en Compréhension</h3>
+                        <p>Les listes en compréhension permettent de créer des listes de manière élégante et rapide,
+                            souvent en une
+                            seule ligne de code.</p>
+                        <pre class="example-code"><code>nombres = [x * 2 for x in range(10)]
+print(nombres)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+
+                        <h3>8.2 Utiliser des Sets pour Vérifier l'Appartenance</h3>
+                        <p>Les ensembles sont particulièrement efficaces pour vérifier si un élément existe dans une
+                            collection
+                            grâce à leur temps d'accès en O(1).</p>
+                        <pre class="example-code"><code>ensemble = {1, 2, 3, 4, 5}
+print(3 in ensemble)  # Renvoie True
+print(6 in ensemble)  # Renvoie False
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>True
+False</code></pre>
+
+                        <h3>8.3 Utiliser les Générateurs pour Économiser de la Mémoire</h3>
+                        <p>Les générateurs sont un excellent moyen d'économiser de la mémoire, surtout lorsque vous
+                            travaillez avec
+                            des ensembles de données volumineux. Au lieu de charger toute la collection en mémoire, vous
+                            pouvez
+                            générer les éléments à la demande.</p>
+                        <pre class="example-code"><code>def generate_pairs():
+    for x in range(10):
+        for y in range(10):
+            yield (x, y)
+
+pairs = generate_pairs()
+for pair in pairs:
+    print(pair)
+</code></pre>
+                        <p>Les générateurs ne créent pas toute la collection en mémoire à la fois, ce qui les rend très
+                            efficaces
+                            lorsque vous travaillez avec des données volumineuses.</p>
+                    </section>
+                    <section id="astuces_suite">
+                        <h2>9. Astuces Supplémentaires pour Optimiser l'Utilisation des Collections</h2>
+                        <p>Voici d'autres astuces pour exploiter au mieux les collections en Python dans vos programmes
+                            et améliorer
+                            la lisibilité et l'efficacité du code.</p>
+
+                        <h3>9.1 Utiliser les Dictionnaires pour Compter des Fréquences</h3>
+                        <p>Les dictionnaires sont parfaits pour stocker des comptages de fréquences, comme compter
+                            combien de fois
+                            chaque mot apparaît dans un texte. Cela peut être facilement accompli avec un dictionnaire.
+                        </p>
+                        <pre class="example-code"><code>texte = "Python est un langage de programmation Python est utilisé partout"
+compteur = {}
+
+for mot in texte.split():
+    compteur[mot] = compteur.get(mot, 0) + 1
+
+print(compteur)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>{'Python': 2, 'est': 2, 'un': 1, 'langage': 1, 'de': 1, 'programmation': 1, 'utilisé': 1, 'partout': 1}</code></pre>
+
+                        <h3>9.2 Utiliser des Dictionnaires de Comptage avec Counter</h3>
+                        <p>Le module <code>collections</code> fournit également un moyen simplifié pour effectuer des
+                            comptages avec
+                            <code>Counter</code>, qui est plus efficace pour cela.
+                        </p>
+                        <pre class="example-code"><code>from collections import Counter
+
+texte = "Python est un langage de programmation Python est utilisé partout"
+compteur = Counter(texte.split())
+print(compteur)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>Counter({'Python': 2, 'est': 2, 'un': 1, 'langage': 1, 'de': 1, 'programmation': 1, 'utilisé': 1, 'partout': 1})</code></pre>
+
+                        <h3>9.3 Utiliser des Sets pour Éviter les Doublons</h3>
+                        <p>Les sets sont idéaux pour éliminer les doublons d'une liste. Par exemple, pour obtenir une
+                            liste de mots
+                            uniques dans un texte, vous pouvez convertir la liste en set.</p>
+                        <pre class="example-code"><code>texte = "Python Python est un langage Python"
+mots_uniques = set(texte.split())
+print(mots_uniques)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{'un', 'est', 'Python', 'langage'}</code></pre>
+
+                        <h3>9.4 Utiliser les Listes en Compréhension pour Filtrage</h3>
+                        <p>Les listes en compréhension peuvent être utilisées pour filtrer des éléments d'une liste
+                            selon une
+                            condition spécifique. Cela permet de rendre le code plus concis et lisible.</p>
+                        <pre class="example-code"><code>nombres = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+pairs = [n for n in nombres if n % 2 == 0]
+print(pairs)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>[2, 4, 6, 8]</code></pre>
+
+                        <h3>9.5 Utiliser les Dictionnaires de Valeurs Par Défaut avec defaultdict</h3>
+                        <p>Les dictionnaires <code>defaultdict</code> sont utiles lorsqu'on veut éviter des erreurs
+                            lorsque des clés
+                            sont absentes. Cela est particulièrement pratique dans des scénarios où une clé peut ne pas
+                            exister au
+                            moment de l'accès.</p>
+                        <pre class="example-code"><code>from collections import defaultdict
+
+dictionnaire = defaultdict(int)
+dictionnaire["apples"] += 1
+dictionnaire["bananas"] += 2
+print(dictionnaire)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre
+                            class="highlight"><code>defaultdict(<class 'int'>, {'apples': 1, 'bananas': 2})</code></pre>
+
+                        <h3>9.6 Utiliser <code>OrderedDict</code> pour Maintenir l'Ordre</h3>
+                        <p>Le module <code>collections</code> propose également le <code>OrderedDict</code> pour
+                            maintenir l'ordre
+                            des éléments dans un dictionnaire. Cela est utile si vous devez préserver l'ordre
+                            d'insertion des
+                            éléments, ce qui n'est pas garanti avec un dictionnaire standard avant Python 3.7.</p>
+                        <pre class="example-code"><code>from collections import OrderedDict
+
+ordered_dict = OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+print(ordered_dict)
+</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>OrderedDict([('a', 1), ('b', 2), ('c', 3)])</code></pre>
+                    </section>
+                    <section id="ensembles">
+                        <h2>10. Les Ensembles</h2>
+                        <p>Les ensembles (<code>set</code>) sont des collections non ordonnées et non indexées
+                            d'éléments uniques. Ils sont utiles pour garantir l'unicité et effectuer des opérations
+                            mathématiques comme l'union, l'intersection, ou la différence.</p>
+
+                        <h3>10.1 Création d'un Ensemble</h3>
+                        <p>Vous pouvez créer un ensemble en utilisant des accolades <code>{}</code> ou la fonction
+                            <code>set()</code> :
+                        </p>
+                        <pre class="example-code"><code># Avec des accolades
+                    ensemble = {1, 2, 3, 4}
+                    print(ensemble)
+                    
+                    # Avec la fonction set()
+                    ensemble_vide = set()
+                    ensemble_chaine = set("Python")
+                    print(ensemble_vide)
+                    print(ensemble_chaine)</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{1, 2, 3, 4}
+                    set()
+                    {'n', 'y', 't', 'o', 'P', 'h'}</code></pre>
+
+                        <h3>10.2 Opérations sur les Ensembles</h3>
+                        <p>Les ensembles permettent des opérations mathématiques comme :</p>
+                        <ul>
+                            <li><strong>Union</strong> (<code>|</code>): Combine tous les éléments de deux ensembles.
+                            </li>
+                            <li><strong>Intersection</strong> (<code>&</code>): Garde les éléments communs à deux
+                                ensembles.</li>
+                            <li><strong>Différence</strong> (<code>-</code>): Soustrait les éléments d'un ensemble à un
+                                autre.</li>
+                            <li><strong>Différence symétrique</strong> (<code>^</code>): Garde les éléments présents
+                                dans un seul des deux ensembles.</li>
+                        </ul>
+                        <pre class="example-code"><code>a = {1, 2, 3}
+                    b = {3, 4, 5}
+                    
+                    print(a | b)  # Union
+                    print(a & b)  # Intersection
+                    print(a - b)  # Différence
+                    print(a ^ b)  # Différence symétrique</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{1, 2, 3, 4, 5}
+                    {3}
+                    {1, 2}
+                    {1, 2, 4, 5}</code></pre>
+
+                        <h3>10.3 Méthodes Utiles pour les Ensembles</h3>
+                        <p>Voici quelques méthodes utiles pour manipuler les ensembles :</p>
+                        <ul>
+                            <li><code>add(x)</code>: Ajoute un élément à l'ensemble.</li>
+                            <li><code>remove(x)</code>: Supprime un élément (erreur si absent).</li>
+                            <li><code>discard(x)</code>: Supprime un élément (aucune erreur si absent).</li>
+                            <li><code>pop()</code>: Supprime et retourne un élément arbitraire.</li>
+                            <li><code>clear()</code>: Vide l'ensemble.</li>
+                        </ul>
+                        <pre class="example-code"><code>ensemble = {1, 2, 3}
+                    ensemble.add(4)
+                    print(ensemble)
+                    
+                    ensemble.remove(2)
+                    print(ensemble)
+                    
+                    ensemble.discard(5)  # Pas d'erreur si absent
+                    ensemble.pop()  # Élément arbitraire supprimé
+                    print(ensemble)
+                    
+                    ensemble.clear()
+                    print(ensemble)</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{1, 2, 3, 4}
+                    {1, 3, 4}
+                    {3, 4}
+                    set()</code></pre>
+
+                        <h3>10.4 Ensembles Immuables : <code>frozenset</code></h3>
+                        <p>Un <code>frozenset</code> est une version immuable d'un ensemble. Une fois créé, ses éléments
+                            ne peuvent pas être modifiés :</p>
+                        <pre class="example-code"><code>immutable_set = frozenset([1, 2, 3])
+                    print(immutable_set)
+                    
+                    # immutable_set.add(4)  # Erreur : frozenset est immuable</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>frozenset({1, 2, 3})</code></pre>
+
+                        <h3>10.5 Applications des Ensembles</h3>
+                        <ul>
+                            <li><strong>Suppression des doublons :</strong> Convertir une liste en un ensemble pour
+                                obtenir les éléments uniques.</li>
+                            <li><strong>Tests d'appartenance rapides :</strong> Les ensembles offrent un temps d'accès
+                                O(1) pour les tests d'appartenance.</li>
+                            <li><strong>Opérations mathématiques :</strong> Réaliser des calculs comme l'union ou
+                                l'intersection facilement.</li>
+                        </ul>
+                        <pre class="example-code"><code>liste = [1, 2, 2, 3, 4, 4, 5]
+                    ensemble_unique = set(liste)
+                    print(ensemble_unique)
+                    
+                    print(3 in ensemble_unique)  # Test d'appartenance
+                    print(6 in ensemble_unique)</code></pre>
+                        <p><strong>Sortie :</strong></p>
+                        <pre class="highlight"><code>{1, 2, 3, 4, 5}
+                    True
+                    False</code></pre>
+                    </section>
+
+                    <footer class="footer text-center">
+                        <p>© 2025 Documentation Python - Collections</p>
+                    </footer>
+                    </div>

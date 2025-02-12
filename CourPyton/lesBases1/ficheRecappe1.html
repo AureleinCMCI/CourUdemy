@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Python</title>
+    <!-- Lien vers la feuille de style Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Documentation Python</h1>
+
+        <h2>Types de Variables</h2>
+        <p>Les types de données les plus utilisés en Python :</p>
+        <div class="code-block">
+            <code>a = "Bonjour"  # chaine de caractères : str</code><br>
+            <code>b = 5  # nombre entier : int</code><br>
+            <code>c = 1.5  # nombre à virgules : float</code><br>
+            <code>d = True  # True ou False : bool</code>
+        </div>
+
+        <h2>Print et Input</h2>
+        <p>Comment afficher et récupérer des données :</p>
+        <div class="code-block">
+            <code>nom = input("Quel est votre nom? ")</code><br>
+            <code>print("Vous vous appelez " + nom)  # concaténation de chaine</code><br>
+            <code>print(f"Vous vous appelez {nom}")  # chaine formatée</code><br>
+            <code>print("Vous vous appelez %s" % nom)  # chaine formatée (ancien format)</code>
+        </div>
+
+        <h2>Commentaires</h2>
+        <p>Ajouter des commentaires dans votre code :</p>
+        <div class="code-block">
+            <code># Commentaire sur une ligne</code><br>
+            <code>""" Commentaire<br>sur<br>plusieurs lignes"""</code>
+        </div>
+
+        <h2>Conversions</h2>
+        <p>Convertir entre les types de données :</p>
+        <div class="code-block">
+            <code>age = 30</code><br>
+            <code>print("Votre age est: " + str(age))  # conversion de int vers str, et concaténation</code><br>
+            <code>age_str = "30"</code><br>
+            <code>age_int = int(age_str)  # conversion de str vers int.</code>
+        </div>
+
+        <h2>Utiliser un Bloc try/except</h2>
+        <p>Utiliser un bloc `try/except` pour gérer les erreurs :</p>
+        <div class="code-block">
+            <code>try:</code><br>
+            <code>&nbsp;&nbsp;age_int = int(age_str)</code><br>
+            <code>except:</code><br>
+            <code>&nbsp;&nbsp;print("ERREUR: Vous devez rentrer un nombre pour l'age")</code>
+        </div>
+
+        <h2>Boucle While</h2>
+        <p>Une boucle qui s'exécute tant que la condition est vraie :</p>
+        <div class="code-block">
+            <code>nom = ""</code><br>
+            <code>while nom == "":</code><br>
+            <code>&nbsp;&nbsp;nom = input("Quel est votre nom? ")</code>
+        </div>
+
+        <h2>Boucle For</h2>
+        <p>Une boucle qui s'exécute un nombre de fois défini :</p>
+        <div class="code-block">
+            <code>for i in range(0, 4):  # de 0 (inclus) à 4 (exclu) : 0, 1, 2, 3</code><br>
+            <code>&nbsp;&nbsp;print(i)</code>
+        </div>
+
+        <h2>Fonctions</h2>
+        <p>Définir et appeler des fonctions :</p>
+        <div class="code-block">
+            <code>def afficher_informations_personne(nom, age, taille = 0):</code><br>
+            <code>&nbsp;&nbsp;print("Vous vous appelez " + nom + ", vous avez " + str(age) + " ans")</code><br>
+            <code>afficher_informations_personne("Jean", 25)</code>
+        </div>
+
+        <h2>Conditions</h2>
+        <p>Utiliser des conditions pour exécuter du code selon les critères donnés :</p>
+        <div class="code-block">
+            <code>if age == 17:</code><br>
+            <code>&nbsp;&nbsp;print("Vous êtes presque majeur")</code><br>
+            <code>elif 12 <= age < 18:</code><br>
+            <code>&nbsp;&nbsp;print("Vous êtes adolescent")</code><br>
+            <code>elif age == 1 or age == 2:</code><br>
+            <code>&nbsp;&nbsp;print("Vous êtes un bébé")</code><br>
+            <code>elif age >= 18:</code><br>
+            <code>&nbsp;&nbsp;print("Vous êtes majeur")</code><br>
+            <code>else:</code><br>
+            <code>&nbsp;&nbsp;print("Vous êtes mineur")</code>
+        </div>
+    </div>
+
+    <!-- Lien vers les scripts Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
