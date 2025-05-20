@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'menu/style.css'  %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'menu/images/small_logo.png' %}" alt="Logo du restaurant" class="logo">
+    </header>
+    <div id="title_Pizzas">
+        <h1>Les pizzas</h1>
+    </div>
+    <ul>
+        {% for pizza in pizzas %}
+        <li class="list_pizza">
+    <div class="pizza_row">
+        <span class="pizza_nom">{{ pizza.nom }}</span>
+        <span class="pizza_prix">{{ pizza.prix }}€</span>
+    </div>
+    <div class="pizza_ingredient">
+        {% if pizza.ingredients_list|length > 3 %}
+            {{ pizza.ingredients_list.0 }}, {{ pizza.ingredients_list.1 }}, {{ pizza.ingredients_list.2 }},
+            <span class="more-ingredients" style="display:none;">
+                {% for ing in pizza.ingredients_list|slice:"3:" %}
+                    {{ ing }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </span>
+            <button class="show-more-btn" onclick="toggleIngredients(this)">Afficher tout</button>
+        {% else %}
+            {{ pizza.ingrédient }}
+        {% endif %}
+    </div>
+</li>
+
+
+        {% endfor %}
+    </ul>
+    <script>
+        function toggleIngredients(btn) {
+            var more = btn.previousElementSibling;
+            if (more.style.display === "none") {
+                more.style.display = "inline";
+                btn.textContent = "Masquer";
+            } else {
+                more.style.display = "none";
+                btn.textContent = "Afficher tout";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

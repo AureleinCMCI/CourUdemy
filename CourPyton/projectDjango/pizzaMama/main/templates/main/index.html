@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/style.css'  %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="center">
+            <img src="{% static 'main/images/main_logo.png' %}" alt="Logo du restaurant" class="logo" style="display: flex;">
+            <a href="{% url 'menu:index' %}">voir le menu</a>
+        </div>
+
+    </header>
+
+</body>
+
+</html>
