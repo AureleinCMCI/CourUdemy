@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion / Inscription</title>
+    <link rel="stylesheet" href="{% static 'contact/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<h2>Défi hebdo #1 : Formulaire Connexion/Inscription</h2>
+<div class="container" id="container">
+    <!-- Formulaire Inscription -->
+    <div class="form-container sign-up-container">
+        <form method="post" action="{% url 'contact:signup' %}">
+            {% csrf_token %}
+            <input type="hidden" name="signup" value="1">
+            <h1>Créer un compte</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>ou utilise ton email pour t'inscrire</span>
+
+            <!-- Affichage global des erreurs d'inscription -->
+            {% if signup_form.errors %}
+                <div class="error">
+                    <ul>
+                        {% for field in signup_form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }} : {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in signup_form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <input type="text" name="{{ signup_form.first_name.name }}" placeholder="Prénom" value="{{ signup_form.first_name.value|default_if_none:'' }}">
+            {% for error in signup_form.first_name.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="text" name="{{ signup_form.last_name.name }}" placeholder="Nom" value="{{ signup_form.last_name.value|default_if_none:'' }}">
+            {% for error in signup_form.last_name.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="text" name="{{ signup_form.username.name }}" placeholder="Nom d'utilisateur" value="{{ signup_form.username.value|default_if_none:'' }}">
+            {% for error in signup_form.username.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="email" name="{{ signup_form.email.name }}" placeholder="Email" value="{{ signup_form.email.value|default_if_none:'' }}">
+            {% for error in signup_form.email.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="password" name="{{ signup_form.password1.name }}" placeholder="Mot de passe">
+            {% for error in signup_form.password1.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="password" name="{{ signup_form.password2.name }}" placeholder="Confirme ton mot de passe">
+            {% for error in signup_form.password2.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <button type="submit">Inscription</button>
+        </form>
+    </div>
+    <!-- Formulaire Connexion -->
+    <div class="form-container sign-in-container">
+        <form method="post" action="{% url 'contact:signup' %}">
+            {% csrf_token %}
+            <input type="hidden" name="signin" value="1">
+            <h1>Connexion</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>ou utilise ton compte</span>
+
+            <input type="text" name="{{ signin_form.username.name }}" placeholder="Nom d'utilisateur ou Email" value="{{ signin_form.username.value|default_if_none:'' }}">
+            {% for error in signin_form.username.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <input type="password" name="{{ signin_form.password.name }}" placeholder="Mot de passe">
+            {% for error in signin_form.password.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <a href="#">Mot de passe oublié ?</a>
+            <button type="submit">Connexion</button>
+        </form>
+        {% if signin_form.errors %}
+            <div class="error">
+                <ul>
+                    {% for field in signin_form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }} : {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in signin_form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    <!-- Overlay -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Content de te revoir !</h1>
+                <p>Pour rester connecté, connecte-toi avec tes informations personnelles</p>
+                <button class="ghost" id="signIn">Connexion</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Bienvenue !</h1>
+                <p>Entre tes informations personnelles et commence l’aventure avec nous</p>
+                <button class="ghost" id="signUp">Inscription</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>
+        Créé avec <i class="fa fa-heart"></i> par
+        <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+        - Découvre comment ce formulaire a été créé
+        <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">ici</a>.
+    </p>
+</footer>
+<!-- JS pour le slider -->
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+});
+signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+});
+
+</script>
+
+</body>
+</html>

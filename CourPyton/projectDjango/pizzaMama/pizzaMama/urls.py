@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-
+from contact.views import signup_login_view  # Ajoute cet import en haut du fichier
+from contact import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
+    path('main/', include('main.urls')),
     path('menu/', include('menu.urls')),
+    path('auth/', include('contact.urls', namespace='contact')),  # <-- namespace OK
+    path('', views.signup_login_view, name='signup_login'),
 ]
